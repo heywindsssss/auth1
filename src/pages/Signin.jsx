@@ -9,10 +9,24 @@ const SigninPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   
-  const signinUser = () => {
-    signInWithEmailAndPassword(auth, email, password)
-      .then(() => alert("Signed in Successfully"))
-      .catch((err) => console.log(err));
+  const signinUser = async () => {
+    try {
+      const signin = await signInWithEmailAndPassword(auth, email, password)
+      // .then(() => alert("Signed in Successfully"))
+      if (signin) {
+        alert("Signed in Successfully")
+      }
+      else if (!signin) {
+        alert("Invalid user email/password")
+        console.log("Error");
+        
+      }
+    } catch (error) {
+      console.log(error);
+      
+    }
+
+      
   };
 
   return (
