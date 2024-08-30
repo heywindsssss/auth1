@@ -22,6 +22,7 @@ const SigninPage = () => {
         
       }
     } catch (error) {
+      alert("Invalid user email/password")
       console.log(error);
       
     }
